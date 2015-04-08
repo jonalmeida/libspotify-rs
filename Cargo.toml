@@ -1,0 +1,13 @@
+[package]
+name = "spotify"
+version = "0.0.1"
+authors = ["Jonathan Almeida <me@jonalmeida.com>"]
+description = "A simple wrapper for libspotify."
+homepage = "https://github.com/jonalmeida/spotify-rs"
+repository = "https://github.com/jonalmeida/spotify-rs"
+readme = "README.md"
+license = "MIT"
+
+[lib]
+name = "spotify"
+path = "src/lib.rs"
