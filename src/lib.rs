@@ -20,9 +20,9 @@ extern {
 ///
 /// # Examples
 /// ```
-/// use spotify::*;
+/// use spotify;
 ///
-/// println!("{}", build_info);
+/// println!("{}", spotify::build_id());
 ///
 /// // 12.1.51.g86c92b43 Release Linux-x86_64
 /// ```
