@@ -5,8 +5,13 @@ script:
     - cargo build
     - cargo test
 before_script:
-    - curl https://apt.mopidy.com/mopidy.gpg | sudo apt-key add -
-    - echo "deb http://apt.mopidy.com/ stable main contrib non-free" | sudo tee -a /etc/apt/sources.list
-    - echo "deb-src http://apt.mopidy.com/ stable main contrib non-free" | sudo tee -a /etc/apt/sources.list
-    - sudo apt-get update -qq
-    - sudo apt-get install -y libspotify12 libspotify-dev
+    #- curl https://apt.mopidy.com/mopidy.gpg | sudo apt-key add -
+    #- echo "deb http://apt.mopidy.com/ stable main contrib non-free" | sudo tee -a /etc/apt/sources.list
+    #- echo "deb-src http://apt.mopidy.com/ stable main contrib non-free" | sudo tee -a /etc/apt/sources.list
+    #- sudo apt-get update -qq
+    #- sudo apt-get install -y libspotify12 libspotify-dev
+    - wget https://developer.spotify.com/download/libspotify/libspotify-12.1.51-Linux-x86_64-release.tar.gz
+    - tar zxfv libspotify-12.1.51-Linux-x86_64-release.tar.gz
+    - cd libspotify-12.1.51-Linux-x86_64-release/
+    - sudo make install prefix=/usr/local
+    - sudo ldconfig
