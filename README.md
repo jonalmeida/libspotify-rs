@@ -10,7 +10,7 @@ A safe libspotify wrapper for Rust
 
 # Installation
 
-```
+``` sh
 git clone <repo-link-here>
 ```
 
@@ -19,7 +19,7 @@ You also require the libspotify binary which needs to be downloaded separately f
 ## Linux
 
 Download the latest version of libspotify from the developer website [here][linux-dev-download], the install it by following these commands in your terminal:
-```
+``` sh
 wget https://developer.spotify.com/download/libspotify/libspotify-12.1.51-Linux-x86_64-release.tar.gz
 tar zxfv libspotify-12.1.51-Linux-x86_64-release.tar.gz
 cd libspotify-12.1.51-Linux-x86_64-release/
@@ -29,7 +29,7 @@ sudo ldconfig
 
 ## Mac
 Easiest way is to use HomeBrew:
-```
+``` sh
 brew install libspotify
 ```
 
