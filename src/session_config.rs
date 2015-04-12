@@ -11,9 +11,29 @@ extern {
     fn sp_session_create(config: sp_session_config , session: *mut sp_session) -> Error;
 }
 
-pub fn session_create(config: sp_session_config, session: *mut sp_session) -> Error {
+pub struct session_config {
+    api_version: isize,
+    cache_location: String,
+    settings_location: String,
+    application_key: String,
+    application_key_size: usize,
+    user_agent: String,
+    //callbacks: session_callbacks,
+    //userdata: void*?
+    compress_playlists: bool,
+    dont_save_metadata_for_playlists: bool,
+    initially_unload_playlists: bool,
+    device_id: String,
+    proxy: String,
+    proxy_username: String,
+    proxy_password: String,
+    ca_certs_filename: String,
+    tracefile: String,
+}
+
+pub fn session_create<'a>(config: sp_session_config, session: *mut sp_session) -> Result<Error, &'a str> {
     unsafe {
-        sp_session_create(config, session)
+        Ok(sp_session_create(config, session))
     }
 }
 
