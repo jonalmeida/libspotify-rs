@@ -8,8 +8,7 @@ use std::env;
 use std::fs::File;
 use std::path::PathBuf;
 
-mod session_config;
-
+mod session;
 
 pub enum Error {
     /// No errors encountered.

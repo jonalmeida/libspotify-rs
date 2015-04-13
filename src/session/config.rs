@@ -11,7 +11,7 @@ extern {
     fn sp_session_create(config: sp_session_config , session: *mut sp_session) -> Error;
 }
 
-pub struct session_config {
+pub struct config {
     api_version: isize,
     cache_location: String,
     settings_location: String,
