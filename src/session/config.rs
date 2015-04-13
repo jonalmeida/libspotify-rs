@@ -1,14 +1,15 @@
 //#[feature(libc)]
 //extern crate libc;
 
-use super::*;
+// use super::*;
+use session::error;
 
 pub struct sp_session_config;
 pub struct sp_session;
 
 #[link(name = "spotify")]
 extern {
-    fn sp_session_create(config: sp_session_config , session: *mut sp_session) -> Error;
+    fn sp_session_create(config: sp_session_config , session: *mut sp_session) -> error::Error;
 }
 
 pub struct config {
@@ -31,7 +32,7 @@ pub struct config {
     tracefile: String,
 }
 
-pub fn session_create<'a>(config: sp_session_config, session: *mut sp_session) -> Result<Error, &'a str> {
+pub fn session_create<'a>(config: sp_session_config, session: *mut sp_session) -> Result<error::Error, &'a str> {
     unsafe {
         Ok(sp_session_create(config, session))
     }
