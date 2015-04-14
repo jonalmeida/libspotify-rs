@@ -3,6 +3,7 @@
 
 // use super::*;
 use session::error;
+use session::callbacks;
 
 pub struct sp_session_config;
 pub struct sp_session;
@@ -12,14 +13,14 @@ extern {
     fn sp_session_create(config: sp_session_config , session: *mut sp_session) -> error::Error;
 }
 
-pub struct config {
+pub struct Config<T: callbacks::Callbacks> {
     api_version: isize,
     cache_location: String,
     settings_location: String,
     application_key: String,
     application_key_size: usize,
     user_agent: String,
-    //callbacks: session_callbacks,
+    callbacks: Box<T>,
     //userdata: void*?
     compress_playlists: bool,
     dont_save_metadata_for_playlists: bool,

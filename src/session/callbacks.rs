@@ -6,7 +6,7 @@ struct session;
 //TODO: implement
 struct audio_buffer_stats;
 
-trait callbacks {
+pub trait Callbacks {
     fn logged_in(s: &session, error: error::Error);
     fn logged_out(s: &session);
     fn metadata_updated(s: &session);
