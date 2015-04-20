@@ -9,6 +9,8 @@ use std::fs::File;
 use std::path::PathBuf;
 
 mod session;
+mod playlist;
+mod error;
 
 #[link(name = "spotify")]
 extern {
