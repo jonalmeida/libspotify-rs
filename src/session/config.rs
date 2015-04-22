@@ -12,7 +12,7 @@ extern {
     fn sp_session_create(config: sp_session_config , session: *mut sp_session) -> ::error::Error;
 }
 
-pub struct Config<T: callbacks::Callbacks> {
+pub struct Config<T: callbacks::Callbacks<T>> {
     api_version: isize,
     cache_location: String,
     settings_location: String,
