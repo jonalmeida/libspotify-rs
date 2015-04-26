@@ -12,7 +12,7 @@ extern {
     fn sp_session_create(config: sp_session_config , session: *mut sp_session) -> ::error::Error;
 }
 
-pub struct Config<T: callbacks::Callbacks<T>> {
+pub struct Config<T: callbacks::Callbacks<T>, U> {
     api_version: isize,
     cache_location: String,
     settings_location: String,
@@ -20,7 +20,7 @@ pub struct Config<T: callbacks::Callbacks<T>> {
     application_key_size: usize,
     user_agent: String,
     callbacks: Box<T>,
-    //userdata: void*?
+    userdata: Box<U>,
     compress_playlists: bool,
     dont_save_metadata_for_playlists: bool,
     initially_unload_playlists: bool,
