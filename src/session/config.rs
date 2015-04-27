@@ -9,7 +9,8 @@ pub struct sp_session;
 
 #[link(name = "spotify")]
 extern {
-    fn sp_session_create(config: sp_session_config , session: *mut sp_session) -> ::error::Error;
+    fn sp_session_create(config: sp_session_config , session: *mut sp_session)
+                            -> ::error::Error;
 }
 
 pub struct Config<T: callbacks::Callbacks<T>, U> {
@@ -32,7 +33,8 @@ pub struct Config<T: callbacks::Callbacks<T>, U> {
     tracefile: String,
 }
 
-pub fn session_create<'a>(config: sp_session_config, session: *mut sp_session) -> Result<::error::Error, &'a str> {
+pub fn session_create<'a>(config: sp_session_config, session: *mut sp_session)
+                            -> Result<::error::Error, &'a str> {
     unsafe {
         Ok(sp_session_create(config, session))
     }
