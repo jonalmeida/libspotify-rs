@@ -18,7 +18,7 @@ pub struct session_config {
     application_key: *const c_void,
     application_key_size: libc::c_int,
     user_agent: *const libc::c_char,
-    callbacks: *const libc::c_char,
+    //callbacks: extern fn(),
     userdata: *mut c_void,
     compress_playlists: bool,
     dont_save_metadata_for_playlists: bool,
@@ -44,7 +44,7 @@ pub struct Config<'a> {
     settings_location: &'a[u8],
     application_key: &'a str,
     user_agent: &'a str,
-    callbacks: &'a sp_session,
+    //callbacks: Option<callbacks::Callbacks>,
     userdata: &'a str,
     compress_playlists: bool,
     dont_save_metadata_for_playlists: bool,
@@ -57,9 +57,8 @@ pub struct Config<'a> {
     tracefile: &'a str,
 }
 
-pub fn session_create<'a>(config: Config<'a>,
-                          session: *mut sp_session)
-                          -> Result<::error::Error, &'a str> {
+pub fn session_create<'a> (config: Config<'a>, session: *mut sp_session)
+                          -> Result<::error::Error, String> {
     let c_config_ref = session_config {
         api_version:        config.api_version as libc::c_int,
         cache_location:     CString::new(config.cache_location).unwrap().as_ptr(),
@@ -67,7 +66,6 @@ pub fn session_create<'a>(config: Config<'a>,
         application_key:    CString::new(config.application_key).unwrap().as_ptr() as *mut c_void,
         application_key_size: config.application_key.len() as libc::c_int,
         user_agent:         CString::new(config.user_agent).unwrap().as_ptr(),
-        callbacks:          0isize as *const i8,
         userdata:           0isize as *mut c_void,
         compress_playlists: config.compress_playlists,
         dont_save_metadata_for_playlists: config.dont_save_metadata_for_playlists,
