@@ -1,6 +1,9 @@
 language: rust
+sudo: true
 os:
     - linux
+rust:
+    - nightly
 script:
     - cargo build
     - cargo test
